@@ -28,3 +28,13 @@
                o(  )_-\
                  `"""` `
 ```
+
+### Instructions for running a solution
+
+You will need node and npm installed in your machine
+
+```
+> npm install
+> node 1-1.js #or the solution file you want
+# profit
+```
