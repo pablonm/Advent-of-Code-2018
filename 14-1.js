@@ -38,4 +38,3 @@ while (recipesSize < (input + 10)) {
 }
 
 console.log('14-1 solution: ' + nextTen.join(''))
-
