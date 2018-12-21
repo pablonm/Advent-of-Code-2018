@@ -104,7 +104,7 @@ ___________________________________________________
 |    }                                             |
 |__________________________________________________|
 
-we can the same this way, which performs better... 10551408 times better
+we can do the same this way, which performs better... 10551408 times better
 */
 
 let registerZero = 0
