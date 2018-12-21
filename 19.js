@@ -111,4 +111,4 @@ let registerZero = 0
 for (let i = 0; i <= 10551408; i++)
     if (10551408 % i === 0) registerZero += i
 
-console.log('19-1 solution: ' + registerZero)
+console.log('19-2 solution: ' + registerZero)
