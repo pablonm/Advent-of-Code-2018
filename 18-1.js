@@ -86,28 +86,17 @@ const getAdjacents = (field, i, j) => {
 
 const evolve = (field, i, j) => {
     let adjacents = getAdjacents(field, i, j)
-    let next = field[i][j]
-    switch(field[i][j]) {
-        case '.':
-            if (adjacents.filter(a => a === '|').length >= 3) next = '|'
-            break
-        case '|':
-            if (adjacents.filter(a => a === '#').length >= 3) next = '#'
-            break
-        case '#':
-            if (adjacents.filter(a => a === '|').length < 1 || adjacents.filter(a => a === '#').length < 1) next = '.'
-            break
-    }
-    return next
+    if (field[i][j] === '.' && adjacents.filter(a => a === '|').length >= 3) return '|'
+    if (field[i][j] === '|' && adjacents.filter(a => a === '#').length >= 3) return '#'
+    if (field[i][j] === '#' && (adjacents.filter(a => a === '|').length < 1 || adjacents.filter(a => a === '#').length < 1)) return '.'
+    return field[i][j]
 }
 
 const evolveField = (field) => {
     let newField = Array(field.length).fill().map(f => Array(field[0].length))
-    for (let i = 0; i < field.length; i++) {
-        for (let j = 0; j < field[i].length; j++) {
+    for (let i = 0; i < field.length; i++)
+        for (let j = 0; j < field[i].length; j++)
             newField[i][j] = evolve(field, i, j)
-        }
-    }
     return newField
 } 
 
@@ -117,10 +106,10 @@ const afterMinutes = (input, mins) => {
     let patternSize = null
     let lastMin = null
     for (let t = 0; t < mins; t++) {
-        currentField = _.cloneDeep(evolveField(currentField));
+        currentField = evolveField(currentField);
         let flattenedField = _.flatten(currentField).join('')
         let index = _.lastIndexOf(previousFields, flattenedField)
-        if (index > -1) {
+        if (index > -1) { // If this field was already seen then it's a repeating pattern because I say so
             patternSize = t - index
             lastMin = t
             break
@@ -131,7 +120,7 @@ const afterMinutes = (input, mins) => {
     if (patternSize !== null) {
         let times = (mins - lastMin) % patternSize - 1
         for (let i = 0; i < times; i++)
-            currentField = _.cloneDeep(evolveField(currentField));
+            currentField = evolveField(currentField);
     }
     return currentField
 }
