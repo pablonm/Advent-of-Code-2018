@@ -90,18 +90,21 @@ I found out that eventually it loops between instructions 2 and 15
  - Instruction 15: reg[1] = 1 // Go to (2)
  - Instruction 16: reg[1] = reg[1] * reg[1] // Which always sets the value 256 in the reg[1] (the IP) so the program halts
 
-So basically, the program does this:
+So basically, the program sums all the divisors of 10551408 
+looping both the registers 2 and 4 10551408 times, which is crazy
+
+So the loop can be sumarized to this:
 ___________________________________________________
 |                                                  |
 |    let registerZero = 0                          |
 |    for (let i = 0; i <= 10551408; i++) {         |
-|        for (let j = 0; j <= 10551408; j++) {  |
+|        for (let j = 0; j <= 10551408; j++) {     |
 |            if (i * j === 10551408) zero += j     |
 |        }                                         |
 |    }                                             |
 |__________________________________________________|
 
-And that can be optimized to this:
+we can the same this way, which performs better... 10551408 times better
 */
 
 let registerZero = 0
