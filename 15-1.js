@@ -250,12 +250,13 @@ const simulateBattle = (input, elfAttack) => {
     }
 }
 
-const simulation = simulateBattle(input, 3)
+/* const simulation = simulateBattle(input, 3)
 
 console.log(simulation)
-console.log('15-1 solution: ' + simulation.completeRounds * simulation.totalHP)
+console.log('15-1 solution: ' + simulation.completeRounds * simulation.totalHP) */
 
 module.exports = {
     input,
+    solve,
     simulateBattle,
 }
